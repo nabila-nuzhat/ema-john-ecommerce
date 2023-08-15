@@ -1,0 +1,33 @@
+:root {
+    /* --primary-font: 'Inter', sans-serif;
+    --secondary-font: 'Lexend Deca', sans-serif;
+     */
+    --darkest-blue: #1C2B35;
+    --white: #ffffff;
+    --vivid-gamboge: #FF9900;
+           
+}
+
+header{
+    background-color: var(--darkest-blue);
+    padding: 0 100px;
+}
+
+nav{
+    height: 80px;
+    display: flex;
+/* horizontal center align */
+    justify-content: space-between;
+/*vertical center align */
+    align-items: center;
+}
+
+header nav a{
+    text-decoration: none;
+    color: var(--white);
+    margin-left: 32px;
+}
+
+header nav a:hover{
+ color: var(--vivid-gamboge);
+}
