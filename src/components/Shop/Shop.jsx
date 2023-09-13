@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb, getShoppingCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 // Fake data link: use this link to load data: https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json
 
@@ -80,6 +84,11 @@ setCart(newCart);
     addToDb(product.id);
   }
 
+// clear whole cart:Button
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
+}
 
     return (
     // shop-container parent shop div
@@ -97,7 +106,19 @@ setCart(newCart);
                 {/* <h3>Order Summary</h3>
                 <p>Selected Items: {cart.length} </p> */}
 
-                <Cart cart={cart}></Cart>
+                <Cart 
+                cart={cart}
+                handleClearCart={handleClearCart}
+                >
+                    {/* checkout button & Review items module 55-8*/}
+                    
+                    <Link to="/order" className='proceed-link'>
+                        <button className='btn-proceed'>
+                            <span>Review Order</span>
+                            <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                            </button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );

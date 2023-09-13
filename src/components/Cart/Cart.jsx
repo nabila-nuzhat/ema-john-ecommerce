@@ -1,7 +1,9 @@
 import React from 'react';
 import './Cart.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 // const Cart = (props) => { 
-    const Cart = ({cart}) => { //option 3: use {cart} in place of props
+    const Cart = ({cart, handleClearCart, children}) => { //option 3: use {cart} in place of props
     // const cart = props.cart; // option 1: sending cart data from shop.jsx to cart.jsx
     // const {cart} = props; // option 2: destructuring props
 
@@ -40,6 +42,13 @@ const grandTotal = totalPrice + totalShipping + tax;
             <p>Tax&#58; &#36;{tax.toFixed(2)}</p>
             <p> Grand Total&#58; &#36;{grandTotal.toFixed(2)} </p>
 
+            <button onClick={handleClearCart} className='btn-clear-cart'> <span>Clear Cart </span>  
+                <FontAwesomeIcon
+                icon={faTrashAlt}></FontAwesomeIcon>
+            </button>
+
+    {/* for checkout button using children prop */}
+            {children}
         </div>
     );
 };

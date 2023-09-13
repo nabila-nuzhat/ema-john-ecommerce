@@ -1,11 +1,26 @@
-.cart{
+.cart {
     background-color: var(--bgc-vivid-gamboge-opacity);
     padding: 23px;
     position: sticky;
     top: 0;
 }
 
-.cart p{
+.cart p {
     font-size: 17px;
     padding-bottom: 25px;
+}
+
+.btn-clear-cart {
+    width: 250px;
+    height: 56px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    background: #FF3030;
+    color: white;
+    font-size: 21px;
+    font-weight: 100;
+
+    align-items: center;
 }
