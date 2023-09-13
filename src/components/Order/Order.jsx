@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
 import { useLoaderData } from 'react-router-dom';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import '../Order/Order.css'
+import { removeFromDb } from '../../utilities/fakedb';
 const Order = () => {
 
-    // shared loader: Module 55-2
+// shared loader: Module 55-2
     
 // previous code block::::
     // const products = useLoaderData();
@@ -26,8 +27,22 @@ const Order = () => {
     // );
 
 // replacing cart in place of "products"
-    const cart = useLoaderData();
-    console.log(cart);
+    const savedCart = useLoaderData();
+
+/** Module 55-6: review item's (added to cart items) delete button make
+ * savedCart used for initial stage of cart
+ *  */
+const [cart, setCart] = useState(savedCart);
+
+// event handler of deleted cart
+    const handleRemoveFromCart = (id) => {
+        console.log(id);
+        const remaining = cart.filter(product => product.id !== id);
+        setCart(remaining);
+        removeFromDb(id);
+    }
+
+    // console.log(savedCart);
     
     return (
         <div className='shop-container'>
@@ -41,6 +56,7 @@ const Order = () => {
                     cart.map(product => <ReviewItem
                     key={product.id}
                     product={product}
+                    handleRemoveFromCart={handleRemoveFromCart}
                     ></ReviewItem>)
                 }
 
